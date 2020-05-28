@@ -1,0 +1,150 @@
+* { /*Hacer que la margen que viene por defecto en el navegador se haga cero*/
+	padding:0;
+	margin:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+ 
+body {background:#FEFEFE;}/*color del boton menu*/
+ 
+.menu_bar { /*Acceder al menu*/
+	display:none;  /*ocultar el boton menu*/
+}
+ 
+header {
+	width: 100%;
+}
+ 
+header nav { 
+	background:#023859;
+	z-index:1000; /*Hacer que el menu se quede fijo arriba de todos los elementos */
+	max-width: 1000px; /*ancho del menu*/
+	width:95%; /*ancho del menu para que no ocupe toda la ventana*/
+	margin:20px auto;
+}
+ 
+header nav ul {
+	list-style:none; /*quitarle todos los guiones de listado al menu*/
+}
+ 
+header nav ul li { 
+	display:inline-block; /*para que quede el menu horizontal y que sirvan los menus desplegables*/
+	position: relative; /* sirve para los submenus*/
+}
+ 
+header nav ul li:hover {/*efecto para que cuando se pase el mouse por encima cambie de color*/
+	background:#E6344A; /*color al que cambia*/
+}
+ 
+header nav ul li a { /*color del texto del menu*/
+	color:#fff;
+	display:block;
+	text-decoration:none;
+	padding: 20px;
+}
+ 
+header nav ul li a span { /*para separar los iconos del texto del menu*/
+	margin-right:10px;
+}
+ 
+header nav ul li:hover .children { /*para que cuando pasemos el mouse encima del indice del menu las subclases se muestren*/
+	display:block;
+}
+ 
+header nav ul li .children { /*ocultar los submenus*/
+	display: none;
+	background:#011826;
+	position: absolute; /*para que el submenu quede vertical*/
+	width: 150%;
+	z-index:1000;/*para que el submenu en una pantalla pequeña quede bien */
+}
+ 
+header nav ul li .children li { /*para acomodar el simbolo del punto*/
+	display:block;
+	overflow: hidden;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+}
+ 
+header nav ul li .children li a {
+	display: block;
+}
+ 
+header nav ul li .children li a span { /*para la ubicacion del punto*/
+	float: right;
+	position: relative;
+	top:3px;
+	margin-right:0;
+	margin-left:10px;
+}
+ 
+header nav ul li .caret {
+	position: relative;
+	top:3px;
+	margin-left:10px;
+	margin-right:0px;
+}
+ 
+@media screen and (max-width: 800px) {
+	body {
+		padding-top:80px;/*para que el texto no quede detras del boton menu*/
+	}
+ 
+	.menu_bar { /*para mostrar el menu*/
+		display:block;
+		width:100%;
+		position: fixed;
+		top:0;/*para que este pegado hacia arriba lo mas que se pueda*/
+		background:#E6344A;
+	}
+ 
+	.menu_bar .bt-menu {
+		display: block;
+		padding: 20px;
+		color: #fff;
+		overflow: hidden;
+		font-size: 25px;
+		font-weight: bold; /*para que el texto del boton se bea en negrilla*/
+		text-decoration: none;
+	}
+ 
+	.menu_bar span { /* entra al span que es donde estan los iconos*/
+		float: right; /*desplaza el icono del menu hacia la derecha*/
+		font-size: 40px;
+	}
+ 
+	header nav {
+		width: 80%; /*para que el menu no ocupe toda la ventana*/
+		height: calc(100% - 80px);/*la altura es del 100% pero le resta los 80 pixeles del boton menu*/
+		position: fixed;
+		right:100%; /*para que empuje el 100% del menu hacia la izquierda para que no se vea*/
+		margin: 0;
+		overflow: scroll; /*para quesi la pantalla es muy pequeña en lo vertical le aparezca un scroll para ver todo el menu*/
+	}
+ 
+	header nav ul li {
+		display: block;
+		border-bottom:1px solid rgba(255,255,255,.5);
+	}
+ 
+	header nav ul li a {
+		display: block;
+	}
+ 
+	header nav ul li:hover .children { /*para que cuando pase el mouse sobre los que tienen sub menus no se vean para despues poderle poner que solo se vean cuando les de click*/
+		display: none;
+	}
+ 
+	header nav ul li .children {
+		width: 100%;
+		position: relative;
+	}
+ 
+	header nav ul li .children li a {
+		margin-left:20px;
+	}
+ 
+	header nav ul li .caret {
+		float: right;
+	}
+}
